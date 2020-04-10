@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href={{ url_for('static', filename='styles/main.css')}}  rel="stylesheet">
+    {% block head%}{%endblock%}
+    
+</head>
+<body>
+    <p class="aligncentre">
+        <a href="/">
+            <img class ="logo2" src="../static/images/logo.png" alt="Urban Closet Logo" height="85">
+        </a>
+    </p>
+    {% block body%}
+    
+    {%endblock%}
+</body>
+</html>

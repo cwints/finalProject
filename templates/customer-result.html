@@ -1,0 +1,98 @@
+{%extends 'base2.html'%}
+
+{% block head%}
+<title>Temp</title>
+{% endblock %}
+
+{% block body%}
+<div class = 'resultDiv'>
+    <table class="productInformation">
+        <th><h3>Customer Information</h3></th>
+        <tr>
+            <td colspan="2"></td>
+            <td rowspan="8">
+                {% if gender == 'Female' %}
+                    <img id="productResultImage" src={{ url_for('static', filename='images/female.png')}}>
+                {% elif gender == 'Male' %}
+                    <img id="productResultImage" src={{ url_for('static', filename='images/male.png')}}>
+                {% endif %}
+            </td>
+        </tr>
+        <tr class="tableInfo"><td class="productInfoCategory">First Name:</td><td class="productInfoText">{{firstName}}</td></tr>
+        <tr class="tableInfo"><td class="productInfoCategory">Last Name:</td><td class="productInfoText">{{lastName}}</td></tr>
+        <tr class="tableInfo"><td class="productInfoCategory">Email:</td><td class="productInfoText">{{email}}</td></tr>
+        <tr class="tableInfo"><td class="productInfoCategory">Country:</td><td class="productInfoText">{{country}}</td></tr>
+        <tr class="tableInfo"><td class="productInfoCategory">Gender:</td><td class="productInfoText">{{gender}}</td></tr>
+        <tr class="tableInfo"><td class="productInfoCategory">Birthday:</td><td class="productInfoText">{{birthday}}</td></tr>
+        <tr class="tableInfo"><td class="productInfoCategory">Customer ID:</td><td class="productInfoText">{{customerID}}</td></tr>
+    </table>
+</div>
+
+
+<div class="buttonDiv">
+    <h3>Customer Statistics</h3>
+    <figure class="labelFigure"><p class="labelText">Avg. Order Quantity:</p></figure>
+    <figure class="labelFigure"><p class="labelText"># Products Purchased:</p></figure>
+    <figure class="labelFigure"><p class="labelText">Historical Price Range:</p></figure>
+</div>
+<div class='buttonDiv' style="padding-bottom: 30px;"> 
+    <figure class="statsFigure"><p class="sizeAvailText">{{wtp['Avg. Order Size (# of items)']}}</p></figure>
+    <figure class="statsFigure"><p class="sizeAvailText">{{wtp['Products_Purchased']}}</p></figure>
+    <figure class="statsFigure"><p class="sizeAvailText">{{wtp['Price Range']}}</p></figure>
+</div>
+
+<div class='resultDiv' style="padding-bottom: 30px;">
+    <h3>Most Recent Purchases</h3>
+    {% for i in mostRecentPurchases %}
+        <a href="{{ url_for('productResult', id=i['Product_ID'])}}">
+            <figure>
+                {% if i["Category"].upper() == 'HATS' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Hats.png')}}>
+                {% elif i["Category"].upper() == 'JACKETS' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Jackets.png')}}>
+                {% elif i["Category"].upper() == 'PANTS' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Pants.png')}}>
+                {% elif i["Category"].upper() == 'SHIRTS' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Shirts.png')}}> 
+                {% elif i["Category"].upper() == 'SWEATERS' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Sweaters.png')}}>
+                {% else %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Shoes.png')}}>
+                {% endif %}
+            </figure>
+        </a>
+    {% endfor %}
+    <div></div>
+    {% for i in mostRecentPurchases %}
+        <div class="productName">{{i["Description"]}}</div>
+    {% endfor %}
+</div>
+
+<div class='resultDiv'>
+    <h3>Recommended Products</h3>
+    {% for i in recommendations %}
+        <a href="{{ url_for('productResult', id=i[0])}}">
+            <figure>
+                {% if i[4] == 'Hats' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Hats.png')}}>
+                {% elif i[4] == 'Jackets' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Jackets.png')}}>
+                {% elif i[4] == 'Pants' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Pants.png')}}>
+                {% elif i[4] == 'Shirts' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Shirts.png')}}> 
+                {% elif i[4] == 'Sweaters' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Sweaters.png')}}>
+                {% else %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Shoes.png')}}>
+                {% endif %}
+            </figure>
+        </a>
+    {% endfor %}
+    <div></div>
+    {% for i in recommendations %}
+        <div class="productName">{{i[2]}}</div>
+    {% endfor %}
+</div>
+
+{% endblock %}  

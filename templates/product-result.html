@@ -1,0 +1,154 @@
+{%extends 'base2.html'%}
+
+{% block head%}
+<title>Temp</title>
+{% endblock %}
+
+{% block body%}
+<div class = 'resultDiv'>
+    <table class="productInformation">
+        
+        <th ><h3>Product Information</h3></th>
+        <tr>
+            <td colspan="2"></td>
+            <td rowspan="9">
+                {% if category == 'Hats' %}
+                    <img id="productResultImage" src={{ url_for('static', filename='images/Hats.png')}}>
+                {% elif category == 'Jackets' %}
+                    <img id="productResultImage" src={{ url_for('static', filename='images/Jackets.png')}}>
+                {% elif category == 'Pants' %}
+                    <img id="productResultImage" src={{ url_for('static', filename='images/Pants.png')}}>
+                {% elif category == 'Shirts' %}
+                    <img id="productResultImage" src={{ url_for('static', filename='images/Shirts.png')}}> 
+                {% elif category == 'Sweaters' %}
+                    <img id="productResultImage" src={{ url_for('static', filename='images/Sweaters.png')}}>
+                {% else %}
+                    <img id="productResultImage" src={{ url_for('static', filename='images/Shoes.png')}}>
+                {% endif %}
+            </td>
+    
+        </tr>
+        <tr class="tableInfo"><td class="productInfoCategory">Name:</td><td class="productInfoText">{{name}}</td></tr>
+        <tr class="tableInfo"><td class="productInfoCategory">Product ID:</td><td class="productInfoText">{{productID}}</td></tr>
+        <tr class="tableInfo"><td class="productInfoCategory">Price:</td><td class="productInfoText">{{price}}</td></tr>
+        <tr class="tableInfo"><td class="productInfoCategory">Colour:</td><td class="productInfoText">{{colour}}</td></tr>
+        <tr class="tableInfo"><td class="productInfoCategory">Category:</td><td class="productInfoText">{{category}}</td></tr>
+        <tr class="tableInfo"><td class="productInfoCategory">Design:</td><td class="productInfoText">{{design}}</td></tr>
+        <tr class="tableInfo"><td class="productInfoCategory">Pattern:</td><td class="productInfoText">{{pattern}}</td></tr>
+    </table>
+</div>
+
+<div class='buttonDiv' style="padding-bottom: 30px;">
+    <h3>Sizes Available</h3>
+	<input class="sizeButton" type='button' value='XS'>
+	<input class="sizeButton" type='button' value='S'>
+	<input class="sizeButton" type='button' value='M'>
+	<input class="sizeButton" type='button' value='L'>
+	<input class="sizeButton" type='button' value='XL'>
+</div>
+
+<div class='resultDiv' style="padding-bottom: 30px;">
+    <h3>Previously Purchased With</h3>
+    {% for i in purchased_together %}
+        <a href="{{ url_for('productResult', id=i['Product_ID'])}}">
+            <figure>
+                {% if i['Category'] == 'HATS' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Hats.png')}}>
+                {% elif i['Category'] == 'JACKETS' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Jackets.png')}}>
+                {% elif i['Category'] == 'PANTS' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Pants.png')}}>
+                {% elif i['Category'] == 'SHIRTS' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Shirts.png')}}> 
+                {% elif i['Category'] == 'SWEATERS' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Sweaters.png')}}>
+                {% else %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Shoes.png')}}>
+                {% endif %}
+            </figure>
+        </a>
+    {% endfor %}
+    <div></div>
+    {% for i in purchased_together %}
+        <div class="productName">{{i['Description']}}</div>
+    {% endfor %}
+</div>
+
+
+
+<div class='resultDiv' style="padding-bottom: 30px;">
+    <h3>Recommended Items by Common Purchase Patterns</h3>
+    {% for i in recosFromPreviousPurchases %}
+        <a href="{{ url_for('productResult', id=i[0])}}">
+            <figure>
+                {% if i[4] == 'Hats' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Hats.png')}}>
+                {% elif i[4] == 'Jackets' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Jackets.png')}}>
+                {% elif i[4] == 'Pants' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Pants.png')}}>
+                {% elif i[4] == 'Shirts' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Shirts.png')}}> 
+                {% elif i[4] == 'Sweaters' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Sweaters.png')}}>
+                {% else %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Shoes.png')}}>
+                {% endif %}
+            </figure>
+        </a>
+    {% endfor %}
+    <div></div>
+    {% for i in recosFromPreviousPurchases %}
+        <div class="productName">{{i[2]}}</div>
+    {% endfor %}
+</div>
+
+<div class='resultDiv'>
+    <h3>Similar Products</h3>
+    {% for i in kMeansRecos %}
+        <a href="{{ url_for('productResult', id=i[0])}}">
+            <figure>
+                {% if i[4] == 'Hats' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Hats.png')}}>
+                {% elif i[4] == 'Jackets' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Jackets.png')}}>
+                {% elif i[4] == 'Pants' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Pants.png')}}>
+                {% elif i[4] == 'Shirts' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Shirts.png')}}> 
+                {% elif i[4] == 'Sweaters' %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Sweaters.png')}}>
+                {% else %}
+                    <img class="productImg" src={{ url_for('static', filename='images/Shoes.png')}}>
+                {% endif %}
+            </figure>
+        </a>
+    {% endfor %}
+    <div></div>
+    {% for i in kMeansRecos %}
+        <div class="productName">{{i[2]}}</div>
+    {% endfor %}
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+<script>
+	
+	// [xs, s, m, l, xl]
+	var sizesAvail = [1,0,1,1,0];
+	
+	$(document).ready(function () {
+		
+		$('.buttonDiv').children().each(function(i) {
+			if (sizesAvail[i-1] == 0) {
+				this.style.backgroundColor='#999';
+				this.disabled = true;
+			}
+			
+		});
+	});
+</script>
+
+
+{% endblock %}  

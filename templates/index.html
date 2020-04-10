@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href={{ url_for('static', filename='styles/main.css')}}  rel="stylesheet">
+    <title>Urban Closet</title>
+</head>
+<body>
+   <p class="aligncentre">
+        <a href="/">
+            <img class ="logo" src={{ url_for('static', filename='images/logo.png')}} alt="Urban Closet Logo" height="150">
+        </a>
+        <table class="hometable">
+            <tr>
+                <td><img class = "homepageImage" src={{ url_for('static', filename='images/product.png')}} alt="Search by Product" height="270" width="270"></td>
+                <td><img class = "homepageImage" src={{ url_for('static', filename='images/customer.png')}} alt="Search by Customer"height="270" width="270"></td>
+            </tr>
+            <tr>
+                <td><button class="productButton" onclick= "window.location.href = 'product'">Search by Product</button></td>
+                <td><button class="customerButton" onclick= "window.location.href = 'customer'">Search by Customer</button></td>
+            </tr>
+        </table>
+    <p/>
+</body>
+</html>

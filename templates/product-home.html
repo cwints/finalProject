@@ -1,0 +1,110 @@
+{%extends 'base2.html'%}
+
+{% block head%}
+    <title>Temp</title>
+    <title>Product Search</title>
+    <link href={{ url_for('static', filename='styles/main.css')}}  rel="stylesheet">
+    <script type="text/javascript">
+        function display(s1,s2,s3){
+            var s1 = document.getElementById(s1);
+            var s2 = document.getElementById(s2);
+            var s3 = document.getElementById(s3);
+            if(s1.value == "Product ID"){
+                s2.style.display = "initial";
+                s3.style.display = "None";
+            }
+            else if(s1.value == "Product Attributes"){
+                s2.style.display = "None";
+                s3.style.display = "initial";
+            }
+            else{
+                s2.style.display = "None";
+                s3.style.display = "None";
+            }
+        }
+    </script>
+{% endblock %}
+
+{% block body%}
+    <h2>Product Search</h2>
+    <hr/>
+    <h4 style="display: inline;">Search By:</h4>
+    <select id='searchMethod' class='select' method="POST" onchange='display(this.id,"idSearch","attSearch")' style="display: inline;">
+        <option value=""></option>
+        <option value="Product ID">Product ID</option>
+        <option value="Product Attributes">Product Attributes</option>
+    </select>
+    <hr/>
+    <form id="idForm" action="/product_result"> 
+        <div style="display: None;" id='idSearch'>
+            <h3 style="display: inline;">Product ID</h3>
+            <input class="textbox" name="productID" style="display: inline;">
+            <input type="submit" class="button1" value='Search' style="display: block;">
+        </div>
+    </form>
+    <form action="/product_search"> 
+        <div style="display: None;" id='attSearch'>
+            <div>
+                <h3 class="search_label">Product Category</h3>
+                <select class="select" name="category">
+                    <option value="any">Any</option>
+                    <option value="Hats">Hats</option>
+                    <option value="Jackets">Jackets</option>
+                    <option value="Pants">Pants</option>
+                    <option value="Shirts">Shirts</option>
+                    <option value="Sweaters">Sweaters</option>
+                    <option value="Shoes">Shoes</option>
+                </select>
+            </div>
+            <div>
+                <h3 class="search_label">Colour</h3>
+                <select class="select" name="colour">
+                    <option value="any">Any</option>
+                    <option value="Black">Black</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Brown">Brown</option>
+                    <option value="Green">Green</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Pink">Pink</option>
+                    <option value="Purple">Purple</option>
+                    <option value="Red">Red</option>
+                    <option value="White">White</option>
+                    <option value="Yellow">Yellow</option>
+                </select>
+            </div>
+            <div>
+                <h3 class="search_label">Design</h3>
+                <select class="select" name="design">
+                    <option value="any">Any</option>
+                    <option value="Athletic">Athletic</option>
+                    <option value="Contemporary And Clean">Contemporary and Clean</option>
+                    <option value="Dress To Impress">Dress to Impress</option>
+                    <option value="Funky And Bold">Funky and Bold</option>
+                    <option value="Hispter Trend">Hispter Trend</option>
+                    <option value="Party Pieces">Party Pieces</option>           
+                    <option value="Relaxed And Casual">Relaxed and Casual</option> 
+                    <option value="Romantic And Bohemian">Romantic and Bohemian</option>
+                    <option value="Runway Inspired">Runway Inspired</option>
+                    <option value="Utility And Basics">Utility And Basics</option>
+                </select>
+            </div>
+            <div>
+                <h3 class="search_label">Pattern</h3>
+                <select class="select" name="pattern">
+                    <option value="any">Any</option>
+                    <option value="Animal Print">Animal Print</option>
+                    <option value="Check">Check</option>
+                    <option value="Floral">Floral</option>
+                    <option value="Geometric">Geometric</option>
+                    <option value="Houndstooth">Houndstooth</option>
+                    <option value="Paisley">Paisley</option>
+                    <option value="Plaid">Plaid</option>
+                    <option value="Plain">Plain</option>
+                    <option value="Polka Dots">Polka Dots</option>
+                    <option value="Striped">Striped</option>
+                </select>
+            </div>
+            <input type="submit" class="button1" value='Search' style="display: block;">
+        </div>
+    </form>
+{% endblock %}

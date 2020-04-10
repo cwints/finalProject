@@ -1,0 +1,62 @@
+{%extends 'base2.html'%}
+
+{% block head%}
+    <title>Temp</title>
+    <title>Customer Search</title>
+    <link href={{ url_for('static', filename='styles/main.css')}}  rel="stylesheet">
+    <script type="text/javascript">
+        function display(s1,s2,s3){
+            var s1 = document.getElementById(s1);
+            var s2 = document.getElementById(s2);
+            var s3 = document.getElementById(s3);
+            if(s1.value == "Customer ID"){
+                s2.style.display = "initial";
+                s3.style.display = "None";
+            }
+            else if(s1.value == "Customer Name"){
+                s2.style.display = "None";
+                s3.style.display = "initial";
+            }
+            else{
+                s2.style.display = "None";
+                s3.style.display = "None";
+            }
+        }
+    </script>
+{% endblock %}
+
+{% block body%}
+    <h2>Customer Search</h2>
+    <hr/> 
+    <h4 style="display: inline;">Search By:</h4>
+    <select id='searchMethod' name='searchMethod' method="POST" onchange='display(this.id,"idSearch","nameSearch")' style="display: inline;">
+        <option value=""></option>
+        <option value="Customer ID">Custoner ID</option>
+        <option value="Customer Name">Name and Email</option>
+    </select>
+    <hr/>
+    <form action="/customer_result">
+        <div style="display: None;" id='idSearch'>
+            <h3 style="display: inline;">Customer ID</h3>
+            <input class="textbox" name="customerID" style="display: inline;">
+            <input type="submit" class="button1" value='Search' style="display: block;">
+        </div>
+    </form>
+    <form action="/customer_search"> 
+        <div style="display: None;" id='nameSearch'>
+            <div>
+                <h3 class="search_label">First Name</h3>
+                <input class="textbox" name="firstName">
+            </div>
+            <div>
+                <h3 class="search_label">Last Name</h3>
+                <input class="textbox" name="lastName">
+            </div>
+            <div>
+                <h3 class="search_label">Email</h3>
+                <input class="textbox" name="email">
+            </div>
+            <input type="submit" class="button1" value='Search' style="display: block;">
+        </div>
+    </form>
+{% endblock %}

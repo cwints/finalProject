@@ -1,0 +1,166 @@
+#productResultImage{
+	height: 200px;
+	vertical-align: top;
+	padding-left: 75px;
+}
+
+.productInformation{
+	display: inline;
+	padding-left: 50px;
+}
+
+.resultDiv {
+	width: 100%;
+	min-height: 200px;
+	text-align: center;
+}
+
+.sizeButton:hover {
+	background-color: #3090C7;
+	transition-duration: 250ms;
+}
+
+.sizeButton {
+	height: 40px;
+	line-height: 0px;
+	width: 5%;
+	min-width: 120px;
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	background: #B2CEDE;
+	padding: 20px;
+	border-radius: 5px;
+	display: inline-block;
+	border: none;
+}
+
+.buttonDiv {
+	width: 100%;
+	text-align: center;
+}
+
+#buttonDiv input{
+	font-size: 20px;
+}
+
+.tableInfo{
+	text-align: left;
+}
+
+.productInfoText{
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-right: 75px;
+}
+
+.productInfoCategory{
+	padding-bottom: 5px;
+	padding-top: 5px;
+	min-width: 100px;
+}
+
+
+.productDisplay{
+	border-radius: 50%;
+	height: 150px;
+	width: 150px;
+	font-size: 12px;
+	color: #fff;
+	line-height: 150px;
+	text-align: center;
+	background: #B2CEDE;
+	display: inline-block;
+}
+
+figure{
+	border-radius: 50%;
+	height: 150px;
+	width: 150px;
+	font-size: 12px;
+	color: #fff;
+	line-height: 150px;
+	text-align: center;
+	background: #B2CEDE;
+	display: inline-block;
+}
+
+figure:hover {
+	background-color: #3090C7;
+	transition-duration: 250ms;
+}
+
+.productImg{
+	display: inline-block;
+	width: 125px;
+	height: auto;
+	vertical-align: middle;
+}
+
+.productTable{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.statsFigure{
+	height: 40px;
+	line-height: 0px;
+	width: 5%;
+	min-width: 150px;
+	color: #fff;
+	text-align: center;
+	background: #B2CEDE;
+	border-radius: 5px;
+	display: inline-block;
+	border: none;
+	padding: 1px;
+}
+
+.labelFigure{
+	height: 10px;
+	line-height: 0px;
+	width: 5%;
+	min-width: 150px;
+	text-align: center;
+	border-radius: 5px;
+	display: inline-block;
+	border: none;
+	padding: 1px;
+	background: white;
+	word-wrap: break-word;
+}
+
+.statsFigure:hover{
+	background: #B2CEDE;
+}
+.labelFigure:hover{
+	background: white;
+}
+
+.sizeAvailText{
+	font-size: 20px; 
+	font-weight: bold;
+}
+
+.labelText{
+	font-size: 16px; 
+	color: black;
+}
+
+.productName{
+	height: 16px;
+	width: 190px;
+	padding-left: 20.5px;
+	padding-right: 20.5px;
+	font-size: 16px;
+	color: black;
+	line-height: 16px;
+	text-align: center;
+	background: white;
+	display: inline-block;
+}
+
+.productName:hover{
+	background: white;
+}
